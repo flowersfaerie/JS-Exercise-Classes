@@ -63,24 +63,6 @@ class Person {
 	};
 };
 
-//function Person(name, age) {
-//  
-//}
-
-//Person.prototype.eat = function(someFood) {
-//  if (this.stomach.length <= 9) {
-//    this.stomach.push(someFood);
-//  }
-//  return this.stomach;
-//};
-
-//Person.prototype.poop = function() {
-//  this.stomach = [];
-//};
-
-//Person.prototype.toString = function() {
-//  return `${this.name}, ${this.age}`;
-//};
 
 /*
   TASK 2
@@ -97,8 +79,32 @@ class Person {
 */
 
 class Car {
-
+	constructor(model, milesPerGallon) {
+		this.model = model;
+		this.milesPerGallon = milesPerGallon;
+		this.tank = 0;
+		this.odometer = 0;
+	};
+	
+	fill(gallons) {
+		return (this.tank = this.tank + gallons);
+	};
+	
+	drive(distance) {
+		let mpg = distance / this.milesPerGallon;
+		if (mpg <= this.tank) {
+			this.odometer = this.odometer + distance;
+			this.tank = this.tank - distance / this.milesPerGallon;
+		} 
+		
+		else {
+			this.odometer = this.odometer + this.tank * this.milesPerGallon;
+			this.tank = 0;
+			return `I ran out of fuel at ${this.odometer}!`;
+		}
+	};
 }
+
 
 /*
   TASK 3
@@ -114,7 +120,7 @@ class Car {
 */
 class Lambdasian {
 
-}
+};
 
 /*
   TASK 4
